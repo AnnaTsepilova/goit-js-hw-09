@@ -2,12 +2,14 @@ import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-const startBtn = document.querySelector("button[data-start]");
-const dateValue = document.querySelector("#datetime-picker");
-const daysField = document.querySelector("[data-days]");
-const hoursField = document.querySelector("[data-hours]");
-const minutesField = document.querySelector("[data-minutes]");
-const secondsField = document.querySelector("[data-seconds]");
+const refs = {
+    startBtn: document.querySelector("button[data-start]"),
+    dateValue: document.querySelector("#datetime-picker"),
+    daysField: document.querySelector("[data-days]"),
+    hoursField: document.querySelector("[data-hours]"),
+    minutesField: document.querySelector("[data-minutes]"),
+    secondsField: document.querySelector("[data-seconds]"),
+}
 
 let intervalId = null;
 let deltaTime = null;
@@ -21,12 +23,12 @@ const options = {
   
   onClose(selectedDates) {
     timeStampSelectedDate = selectedDates[0].getTime();
-    checkDate(selectedDates[0], startBtn);
+    checkDate(selectedDates[0], refs.startBtn);
     deltaTime = timeStampSelectedDate - Date.now();
   },
 };
 
-flatpickr(dateValue, options);
+flatpickr(refs.dateValue, options);
 
 function checkDate(date, btn) {
     if (date.getTime() < Date.now()) {
@@ -37,8 +39,8 @@ function checkDate(date, btn) {
     }   
 }
  
-startBtn.addEventListener('click', () => {
-   startBtn.setAttribute("disabled", "disabled");
+refs.startBtn.addEventListener('click', () => {
+   refs.startBtn.setAttribute("disabled", "disabled");
     intervalId = setInterval(() => {
         deltaTime -= 1000;
 
@@ -70,10 +72,10 @@ function convertMs(ms) {
 }
 
 function updateTimerFace( { days, hours, minutes, seconds } ) {
-    daysField.textContent = days;
-    hoursField.textContent = hours;
-    minutesField.textContent = minutes;
-    secondsField.textContent = seconds;
+    refs.daysField.textContent = days;
+    refs.hoursField.textContent = hours;
+    refs.minutesField.textContent = minutes;
+    refs.secondsField.textContent = seconds;
 }
 
 
