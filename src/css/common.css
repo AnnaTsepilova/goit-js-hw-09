@@ -24,11 +24,29 @@ img {
   font-size: large;
 }
 
-button {
+.btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  gap: 30px;
+}
+
+.btn-wrapper > button {
+  width: 125px;
+  height: 60px;
+
+  text-transform: uppercase;
+  font-size: 20px;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.timer-btn {
   font-size: large;
 }
 
-.timer {
+.timer,
+.form {
   display: flex;
 }
 
@@ -44,7 +62,44 @@ button {
   font-size: xxx-large;
 }
 
+.field.days {
+  color: blue;
+}
+
+.field.hours {
+  color: green;
+}
+
+.field.minutes {
+  color: orange;
+}
+
+.field.seconds {
+  color: red;
+}
+
 .label {
   font-weight: bold;
   text-transform: uppercase;
+}
+
+.form__field {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-right: 20px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.form input {
+  height: 25px;
+  font-size: 14px;
+}
+
+.form__btn {
+  margin: auto 0 0 0;
+  height: 25px;
+  font-size: 15px;
+  font-weight: bold;
 }
